@@ -5,14 +5,12 @@ namespace DefaultNamespace
     public class Runner
     {
         public GameObject mesh;
-        public bool isDead;
-        public int index;
         public RunnerController controller;
+        public int index;
 
-        public Runner(GameObject mesh, bool isDead, int index)
+        public Runner(GameObject mesh, int index)
         {
             this.mesh = mesh;
-            this.isDead = isDead;
             this.index = index;
             this.controller = mesh.GetComponent<RunnerController>();
         }

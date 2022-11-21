@@ -7,10 +7,8 @@ public class RaceController : MonoBehaviour
 {
     public GameObject meshRunner;
     public TextMeshProUGUI text;
-    public Transform laser;
 
     private const int RUNNER_QUANTITY = 1;
-    private const float DISTANCE_BETWEEN_RUNNERS = 10;
     private static Material commomMaterial, victoryMaterial;
 
     private int generation = 1;
@@ -18,50 +16,41 @@ public class RaceController : MonoBehaviour
 
     private static List<Runner> runners = new List<Runner>(RUNNER_QUANTITY);
 
-    private const float MIN_HEAD_Y_POSITION = 0.10f;
     public Runner firstRunner;
-
+    
     void Start()
     {
         commomMaterial = Resources.Load("common", typeof(Material)) as Material;
         victoryMaterial = Resources.Load("victory", typeof(Material)) as Material;
 
-        Vector3 position = new Vector3(0, 0, 0);
         for (int i = 0; i < RUNNER_QUANTITY; i++)
         {
-            GameObject newRunnerMesh = Instantiate(meshRunner, position, Quaternion.identity);
+            GameObject newRunnerMesh = Instantiate(meshRunner, new Vector3(0, 0, 0), Quaternion.identity);
             newRunnerMesh.SetActive(true);
 
-            Runner newRunner = new Runner(newRunnerMesh, false, i);
+            Runner newRunner = new Runner(newRunnerMesh, i);
             runners.Add(newRunner);
-            position.z += DISTANCE_BETWEEN_RUNNERS;
         }
+
     }
 
-    private void Update()
+    void FixedUpdate()
     {
+        
         for (int i = 0; i < runners.Count; i++)
         {
             Runner r = runners[i];
             GameObject runnerMesh = r.mesh;
-            if (runnerMesh == null)
-            {
-                continue;
-            }
-            RunnerController rController = r.controller;
 
-            if (rController.wrist.position.y < MIN_HEAD_Y_POSITION ||
-                laser.position.x > rController.wrist.position.x)
+            if (r.controller.itHits)
             {
                 Destroy(runnerMesh);
-                r.isDead = true;
                 killds++;
                 
                 if (killds >= RUNNER_QUANTITY)
                 {
                     killds = 0;
                     text.text = (++generation).ToString();
-                    laser.position = new Vector3(-10, 0.35f, 0);
                     saveResult();
                     recreateRunners();
                     break;
@@ -74,21 +63,18 @@ public class RaceController : MonoBehaviour
             }else if (firstRunner == null)
             {
                 firstRunner = runners[0];
+                runnerMesh.transform.Find("head").GetComponent<MeshRenderer>().material =
+                    victoryMaterial;
             }
-            else
-            {
-                if (r.isDead)
-                    continue;
-                
-                RunnerController comparableController = r.controller;
-                
+            else if (firstRunner.index != i && !r.controller.itHits) {
                 GameObject firstRunnerMesh = firstRunner.mesh;
-                RunnerController firstRunnerController = firstRunner.controller;
-                if (comparableController.getRunnerPosition() > firstRunnerController.getRunnerPosition())
+                
+                if (r.mesh.transform.position.x > firstRunner.mesh.transform.position.x)
                 {
                     firstRunnerMesh.transform.Find("head").GetComponent<MeshRenderer>().material =
                         commomMaterial;
                     firstRunner = r;
+                    
                     runnerMesh.transform.Find("head").GetComponent<MeshRenderer>().material = victoryMaterial;
                 }
                 else
@@ -96,28 +82,31 @@ public class RaceController : MonoBehaviour
                     runnerMesh.transform.Find("head").GetComponent<MeshRenderer>().material = commomMaterial;
                 }
             }
+
+            int[] visionRay = r.controller.getRaysPerception();
+            
         }
     }
 
     private void recreateRunners()
     {
-        Vector3 position = new Vector3(0, 0, 0);
+        
+        RunnerController victoryController = firstRunner.controller;
+        NeuralNetwork victoryNetwork = victoryController.brain;
 
         for (int i = 0; i < RUNNER_QUANTITY; i++)
         {
-            GameObject newRunnerMesh = Instantiate(meshRunner, position, Quaternion.identity);
+            GameObject newRunnerMesh = Instantiate(meshRunner, new Vector3(0, 0, 0), Quaternion.identity);
             newRunnerMesh.SetActive(true);
             
-            Runner newRunner = new Runner(newRunnerMesh, false, i);
+            Runner newRunner = new Runner(newRunnerMesh, i);
             
-            RunnerController victoryController = firstRunner.controller;
-            NeuralNetwork victoryNetwork = victoryController.brain.DeepCopy();
+            victoryNetwork = victoryController.brain.DeepCopy();
 
             RunnerController newRunnerController = newRunner.controller;
-            newRunnerController.brain = victoryNetwork.mutate(0.00f);
-            
+            newRunnerController.brain = victoryNetwork.mutate(0.05f);
+
             runners[i] = newRunner;
-            position.z += DISTANCE_BETWEEN_RUNNERS;
         }
 
         firstRunner = null;
@@ -125,15 +114,13 @@ public class RaceController : MonoBehaviour
 
     private void findNewFirstRunner()
     {
-
         float maxValue = float.NegativeInfinity;
         for (int i = 0; i < RUNNER_QUANTITY; i++)
         {
             Runner runner = runners[i];
-            if (!runner.isDead)
+            if (!runner.controller.itHits)
             {
-                RunnerController controller = runner.controller;
-                float characterPosition = controller.wrist.position.y;
+                float characterPosition = firstRunner.mesh.transform.position.z;
                 if (characterPosition > maxValue)
                 {
                     firstRunner = runner;
@@ -146,8 +133,12 @@ public class RaceController : MonoBehaviour
 
     private void saveResult()
     {
-        RunnerController controller = firstRunner.mesh.GetComponent<RunnerController>();
-        float characterPosition = controller.wrist.position.y;
+        float characterPosition = firstRunner.mesh.transform.position.z;
         Debug.Log(characterPosition);
+    }
+
+    public Vector3 getFirstPositionRunner()
+    {
+        return firstRunner.mesh.transform.position;
     }
 }
