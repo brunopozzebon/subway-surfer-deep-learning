@@ -9,69 +9,72 @@ public class RunnerController : MonoBehaviour
     public NeuralNetwork brain;
     [NonSerialized]
     public List<VisionRay> rays = new List<VisionRay>();
-
+    [NonSerialized]
+    public bool itHits, isIsDestroyed;
+    
     public GameObject rayObject;
-
     public int raysQuantity;
-
     public float zVelocity;
-    public bool itHits;
-    private bool goRight, goLeft;
     public float sideVelocity;
-
-    private float RUNNER_ANGLE_VIEW = 160f;
+    
+    private bool goRight, goLeft;
+    private float RUNNER_ANGLE_VIEW = 220f;
     
     void Start()
     {
+        itHits = false;
 
         float angleIncrement = (RUNNER_ANGLE_VIEW / raysQuantity) ;
 
         for (int i = 0; i < raysQuantity; i++)
         {
-            GameObject newRay = Instantiate(rayObject, new Vector3(0, 8, 0), Quaternion.Euler(
-                90, (i * angleIncrement) - (90f - angleIncrement),0));
+            GameObject newRay = Instantiate(rayObject, new Vector3(0, 4, 0), Quaternion.Euler(
+                90, (i * angleIncrement) - (110f - (angleIncrement/2)),0));
             newRay.SetActive(true);
            
             newRay.transform.parent = transform;
 
             Vector3 transformIncrement = newRay.transform.rotation
-                                         * new Vector3(0,10,0);
+                                         * new Vector3(0,30,0);
                 newRay.transform.position += transformIncrement;
             
             VisionRay visionRay = new VisionRay(newRay);
             rays.Add(visionRay);
         }
-
-        brain = new NeuralNetwork(
-            new int[]
-            {
-                9,
-                9,
-                12
-            }
-        );
     }
     
     void Update()
     {
         if (!itHits)
         {
+            if (brain == null)
+            {
+                brain = new NeuralNetwork(
+                    new int[]
+                    {
+                        raysQuantity,
+                        6,
+                        2
+                    }
+                );
+            }
             float leftOffset = goRight ? sideVelocity : 0;
             float rightOffset = goLeft ? -sideVelocity : 0;
             
             float xOffSet = leftOffset + rightOffset;
             
             transform.position = new Vector3(
-                transform.position.x + xOffSet, transform.position.y,transform.position.z + zVelocity);
+                transform.position.x + xOffSet, transform.position.y,transform.position.z
+                                                                     + zVelocity
+                );
         }
-        // goLeft = Input.GetKey(KeyCode.A);
-       // goRight = Input.GetKey(KeyCode.D);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.collider.tag == "Train")
         {
+            
             this.itHits = true;
         }
     }
@@ -86,15 +89,28 @@ public class RunnerController : MonoBehaviour
         goLeft  = isGoingToLeft;
     }
 
-    public int[] getRaysPerception()
+    public List<float> getRaysPerception()
     {
-        int[] perception = new int[rays.Count];
+        List<float> perception = new List<float>(rays.Count);
 
         for (int i = 0; i < rays.Count; i++)
         {
-            perception[i] = rays[i].controller.itHits? 0 :1;
+            perception.Add(rays[i].controller.hitDistance);
         }
 
         return perception;
+    }
+
+    public void setIfRaysAreVisible(bool isVisible)
+    {
+        
+        for (int i = 0; i < rays.Count; i++)
+        {
+            if (!itHits)
+            {
+                rays[i].mesh.GetComponent<MeshRenderer>().enabled = isVisible;
+            }
+           
+        }
     }
 }

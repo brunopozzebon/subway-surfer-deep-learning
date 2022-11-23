@@ -1,28 +1,35 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RayController : MonoBehaviour
 {
     
     private static Material normalRay, collidingRay;
-    public bool itHits;
+    [NonSerialized]
+    public float hitDistance;
+    private Vector3 rayDirection;
 
     private void Start()
     {
         normalRay = Resources.Load("normalRay", typeof(Material)) as Material;
         collidingRay = Resources.Load("collidingRay", typeof(Material)) as Material;
         GetComponent<MeshRenderer>().material = normalRay;
-        itHits = false;
+        rayDirection = transform.Find("end").transform.position - transform.Find("start").transform.position;
     }
 
     private void OnTriggerStay(Collider other)
     {
         if (other.tag == "Train")
         {
-            itHits = true;
             GetComponent<MeshRenderer>().material = collidingRay;
+
+            Ray ray = new Ray(transform.Find("start").transform.position, rayDirection);
+            float distance;
+            if(other.bounds.IntersectRay(ray, out distance))
+            {
+                //Vector3 point = ray.origin + ray.direction * distance;
+                hitDistance = distance;
+            }
         }
     }
 
@@ -30,7 +37,7 @@ public class RayController : MonoBehaviour
     {
         if (other.tag == "Train")
         {
-            itHits = false;
+            hitDistance = float.MaxValue;
             GetComponent<MeshRenderer>().material = normalRay;
         }
       

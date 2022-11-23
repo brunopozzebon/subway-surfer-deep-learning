@@ -12,7 +12,7 @@ namespace DefaultNamespace
         {
             this.mesh = mesh;
             this.index = index;
-            this.controller = mesh.GetComponent<RunnerController>();
+            controller = mesh.GetComponent<RunnerController>();
         }
     }
 }

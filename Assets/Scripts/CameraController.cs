@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
@@ -11,9 +9,14 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         Vector3 firstPositionRunner =  raceController.getFirstPositionRunner();
-        this.transform.position = firstPositionRunner + cameraPositionOffset;
+
+        if (firstPositionRunner != default(Vector3))
+        {
+            transform.position = firstPositionRunner + cameraPositionOffset;
        
-        this.transform.LookAt(firstPositionRunner);
-        this.transform.rotation = Quaternion.Euler(cameraRotationOffset + this.transform.rotation.eulerAngles);
+            transform.LookAt(firstPositionRunner);
+            transform.rotation = Quaternion.Euler(cameraRotationOffset + transform.rotation.eulerAngles);
+        }
+      
     }
 }

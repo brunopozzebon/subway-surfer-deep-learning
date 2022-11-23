@@ -7,11 +7,12 @@ namespace DefaultNamespace
     public class NeuralNetwork
     {
         public List<Layer> layers;
+        private int[] neuronCounts;
 
         public NeuralNetwork(int[] neuronCounts)
         {
             layers = new List<Layer>(neuronCounts.Length - 1);
-
+            this.neuronCounts = neuronCounts;
             for (int i = 0; i < neuronCounts.Length - 1; i++)
             {
                 layers.Add(
@@ -74,7 +75,30 @@ namespace DefaultNamespace
         
         public NeuralNetwork DeepCopy()
         {
-            return (NeuralNetwork)MemberwiseClone();
+            //return (NeuralNetwork)MemberwiseClone();
+
+            NeuralNetwork newNeuralNetwork = new NeuralNetwork(this.neuronCounts);
+
+            for (int m = 0; m < layers.Count; m++)
+            {
+                Layer layer = layers[m];
+                
+                for (int i = 0; i < layer.biases.Count; i++)
+                {
+                    newNeuralNetwork.layers[m].biases[i] = layer.biases[i];
+                }
+
+                for (int i = 0; i < layer.weights.Count; i++)
+                {
+                    for (int j = 0; j < layer.weights[i].Count; j++)
+                    {
+                        newNeuralNetwork.layers[m].weights[i][j] = layer.weights[i][j];
+                    }
+                }
+            }
+
+            return newNeuralNetwork;
+
         }
     }
 }

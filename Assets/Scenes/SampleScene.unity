@@ -123,6 +123,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &148830415
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 148830416}
+  m_Layer: 6
+  m_Name: end
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &148830416
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 148830415}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.016, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2076781310}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &160138584
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -191,6 +222,10 @@ PrefabInstance:
       value: Subway (6)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
       propertyPath: m_TagString
       value: Train
       objectReference: {fileID: 0}
@@ -216,7 +251,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 27.01, y: 27.9, z: 56.48}
+  m_Size: {x: 32.64, y: 27.9, z: 56.48}
   m_Center: {x: 0, y: 14.05, z: 0}
 --- !u!4 &160138587 stripped
 Transform:
@@ -291,6 +326,10 @@ PrefabInstance:
       value: Subway (12)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
       propertyPath: m_TagString
       value: Train
       objectReference: {fileID: 0}
@@ -321,7 +360,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 27.01, y: 27.9, z: 56.48}
+  m_Size: {x: 32.64, y: 27.9, z: 56.48}
   m_Center: {x: 0, y: 14.05, z: 0}
 --- !u!1001 &275815597
 PrefabInstance:
@@ -389,6 +428,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
       propertyPath: m_Name
       value: Subway (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
       propertyPath: m_TagString
@@ -468,6 +511,10 @@ PrefabInstance:
       value: Subway (16)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
       propertyPath: m_TagString
       value: Train
       objectReference: {fileID: 0}
@@ -498,7 +545,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 27.01, y: 27.9, z: 56.48}
+  m_Size: {x: 32.64, y: 27.9, z: 56.48}
   m_Center: {x: 0, y: 14.05, z: 0}
 --- !u!1 &310940887
 GameObject:
@@ -614,6 +661,10 @@ PrefabInstance:
       value: Subway (2)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
       propertyPath: m_TagString
       value: Train
       objectReference: {fileID: 0}
@@ -691,6 +742,10 @@ PrefabInstance:
       value: Subway (9)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
       propertyPath: m_TagString
       value: Train
       objectReference: {fileID: 0}
@@ -721,7 +776,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 27.01, y: 27.9, z: 56.48}
+  m_Size: {x: 32.64, y: 27.9, z: 56.48}
   m_Center: {x: 0, y: 14.05, z: 0}
 --- !u!1 &542410049
 GameObject:
@@ -892,6 +947,10 @@ PrefabInstance:
       value: Subway (13)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
       propertyPath: m_TagString
       value: Train
       objectReference: {fileID: 0}
@@ -922,7 +981,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 27.01, y: 27.9, z: 56.48}
+  m_Size: {x: 32.64, y: 27.9, z: 56.48}
   m_Center: {x: 0, y: 14.05, z: 0}
 --- !u!1001 &687590348
 PrefabInstance:
@@ -992,6 +1051,10 @@ PrefabInstance:
       value: Subway (17)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
       propertyPath: m_TagString
       value: Train
       objectReference: {fileID: 0}
@@ -1022,7 +1085,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 27.01, y: 27.9, z: 56.48}
+  m_Size: {x: 32.64, y: 27.9, z: 56.48}
   m_Center: {x: 0, y: 14.05, z: 0}
 --- !u!1 &705507993
 GameObject:
@@ -1130,7 +1193,7 @@ GameObject:
   - component: {fileID: 961311980}
   - component: {fileID: 961311979}
   - component: {fileID: 961311978}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Train
   m_Icon: {fileID: 0}
@@ -1145,7 +1208,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 961311976}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -50, y: 21.8, z: 0}
+  m_LocalPosition: {x: -40, y: 21.8, z: 0}
   m_LocalScale: {x: -2.4, y: 47.2, z: 8000}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1185,7 +1248,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: bd397765dd9f06f49b3c36619b54caa7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1361,7 +1424,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 550
+      value: 578.8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1396,6 +1459,10 @@ PrefabInstance:
       value: Subway (10)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
       propertyPath: m_TagString
       value: Train
       objectReference: {fileID: 0}
@@ -1426,8 +1493,39 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 27.01, y: 27.9, z: 56.48}
+  m_Size: {x: 32.64, y: 27.9, z: 56.48}
   m_Center: {x: 0, y: 14.05, z: 0}
+--- !u!1 &979589998
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 979589999}
+  m_Layer: 6
+  m_Name: start
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &979589999
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 979589998}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.986, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2076781310}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1005746128 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
@@ -1444,7 +1542,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 27.01, y: 27.9, z: 56.48}
+  m_Size: {x: 32.64, y: 27.9, z: 56.48}
   m_Center: {x: 0, y: 14.05, z: 0}
 --- !u!4 &1005746130 stripped
 Transform:
@@ -1519,6 +1617,10 @@ PrefabInstance:
       value: Subway (5)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
       propertyPath: m_TagString
       value: Train
       objectReference: {fileID: 0}
@@ -1544,7 +1646,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 27.01, y: 27.9, z: 56.48}
+  m_Size: {x: 32.64, y: 27.9, z: 56.48}
   m_Center: {x: 0, y: 14.05, z: 0}
 --- !u!4 &1091130275 stripped
 Transform:
@@ -1619,6 +1721,10 @@ PrefabInstance:
       value: Subway (7)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
       propertyPath: m_TagString
       value: Train
       objectReference: {fileID: 0}
@@ -1644,7 +1750,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 27.01, y: 27.9, z: 56.48}
+  m_Size: {x: 32.64, y: 27.9, z: 56.48}
   m_Center: {x: 0, y: 14.05, z: 0}
 --- !u!4 &1171848988 stripped
 Transform:
@@ -1667,7 +1773,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 27.01, y: 27.9, z: 56.48}
+  m_Size: {x: 32.64, y: 27.9, z: 56.48}
   m_Center: {x: 0, y: 14.05, z: 0}
 --- !u!4 &1212404555 stripped
 Transform:
@@ -1742,6 +1848,10 @@ PrefabInstance:
       value: Subway (3)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
       propertyPath: m_TagString
       value: Train
       objectReference: {fileID: 0}
@@ -1767,7 +1877,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 27.01, y: 27.9, z: 56.48}
+  m_Size: {x: 32.64, y: 27.9, z: 56.48}
   m_Center: {x: 0, y: 14.05, z: 0}
 --- !u!4 &1417803732 stripped
 Transform:
@@ -1842,6 +1952,10 @@ PrefabInstance:
       value: Subway (4)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
       propertyPath: m_TagString
       value: Train
       objectReference: {fileID: 0}
@@ -1867,7 +1981,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 27.01, y: 27.9, z: 56.48}
+  m_Size: {x: 32.64, y: 27.9, z: 56.48}
   m_Center: {x: 0, y: 14.05, z: 0}
 --- !u!4 &1453586990 stripped
 Transform:
@@ -1890,7 +2004,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 27.01, y: 27.9, z: 56.48}
+  m_Size: {x: 32.64, y: 27.9, z: 56.48}
   m_Center: {x: 0, y: 14.05, z: 0}
 --- !u!4 &1467497947 stripped
 Transform:
@@ -2134,6 +2248,10 @@ PrefabInstance:
       value: Subway (15)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
       propertyPath: m_TagString
       value: Train
       objectReference: {fileID: 0}
@@ -2164,7 +2282,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 27.01, y: 27.9, z: 56.48}
+  m_Size: {x: 32.64, y: 27.9, z: 56.48}
   m_Center: {x: 0, y: 14.05, z: 0}
 --- !u!1 &1563108530
 GameObject:
@@ -2248,7 +2366,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 800.8
+      value: 802
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2283,6 +2401,10 @@ PrefabInstance:
       value: Subway (14)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
       propertyPath: m_TagString
       value: Train
       objectReference: {fileID: 0}
@@ -2313,7 +2435,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 27.01, y: 27.9, z: 56.48}
+  m_Size: {x: 32.64, y: 27.9, z: 56.48}
   m_Center: {x: 0, y: 14.05, z: 0}
 --- !u!4 &1673497723 stripped
 Transform:
@@ -2547,10 +2669,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rayObject: {fileID: 2076781306}
-  raysQuantity: 10
-  zVelocity: 0.2
-  itHits: 0
-  sideVelocity: 0.2
+  raysQuantity: 11
+  zVelocity: 0.15
+  sideVelocity: 0.3
 --- !u!4 &1822151677
 Transform:
   m_ObjectHideFlags: 0
@@ -2597,7 +2718,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!1 &1891499083
 GameObject:
   m_ObjectHideFlags: 0
@@ -2610,7 +2731,7 @@ GameObject:
   - component: {fileID: 1891499087}
   - component: {fileID: 1891499086}
   - component: {fileID: 1891499085}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (1)
   m_TagString: Train
   m_Icon: {fileID: 0}
@@ -2625,7 +2746,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1891499083}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 50, y: 21.8, z: 0}
+  m_LocalPosition: {x: 40, y: 21.8, z: 0}
   m_LocalScale: {x: -2.4, y: 47.2, z: 8000}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2665,7 +2786,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: bd397765dd9f06f49b3c36619b54caa7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2846,6 +2967,10 @@ PrefabInstance:
       value: Subway (11)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
       propertyPath: m_TagString
       value: Train
       objectReference: {fileID: 0}
@@ -2876,7 +3001,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 27.01, y: 27.9, z: 56.48}
+  m_Size: {x: 32.64, y: 27.9, z: 56.48}
   m_Center: {x: 0, y: 14.05, z: 0}
 --- !u!1001 &1985752118
 PrefabInstance:
@@ -2946,6 +3071,10 @@ PrefabInstance:
       value: Subway (8)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
       propertyPath: m_TagString
       value: Train
       objectReference: {fileID: 0}
@@ -2971,7 +3100,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 27.01, y: 27.9, z: 56.48}
+  m_Size: {x: 32.64, y: 27.9, z: 56.48}
   m_Center: {x: 0, y: 14.05, z: 0}
 --- !u!4 &1985752121 stripped
 Transform:
@@ -3167,6 +3296,10 @@ PrefabInstance:
       value: Subway
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
       propertyPath: m_TagString
       value: Train
       objectReference: {fileID: 0}
@@ -3251,9 +3384,9 @@ GameObject:
   - component: {fileID: 2076781308}
   - component: {fileID: 2076781307}
   - component: {fileID: 2076781311}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ray
-  m_TagString: Untagged
+  m_TagString: Ray
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3331,9 +3464,11 @@ Transform:
   m_GameObject: {fileID: 2076781306}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0.18, y: 8.743208, z: 11.39}
-  m_LocalScale: {x: 0.1, y: 11.044612, z: 0.10000004}
+  m_LocalScale: {x: 0.1, y: 30, z: 0.10000004}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 979589999}
+  - {fileID: 148830416}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
