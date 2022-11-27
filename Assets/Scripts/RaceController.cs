@@ -9,24 +9,21 @@ using UnityEngine;
 public class RaceController : MonoBehaviour
 {
     public GameObject meshRunner;
-    public TextMeshProUGUI text;
+    public TextMeshProUGUI generationText;
     public TrainsController trainsController;
 
-    private const int RUNNER_QUANTITY = 20;
+    public int runnerQuantity = 20;
 
     private int generation = 1;
     private int killds;
 
-    private static List<Runner> runners = new List<Runner>(RUNNER_QUANTITY);
+    private static List<Runner> runners = new List<Runner>();
 
     public Runner firstRunner;
-    private bool firstPass = true;
-    private float maxMutationFactor = 0.3f;
-    private float minMaxMutationFactor = 0.08f;
 
     void Start()
     {
-        for (int i = 0; i < RUNNER_QUANTITY; i++)
+        for (int i = 0; i < runnerQuantity; i++)
         {
             GameObject newRunnerMesh = Instantiate(meshRunner, new Vector3(0, 0, 0), Quaternion.identity);
             newRunnerMesh.SetActive(true);
@@ -34,6 +31,7 @@ public class RaceController : MonoBehaviour
             runners.Add(newRunner);
         }
 
+        generationText.text = "Geração 1";
         firstRunner = runners[0];
         firstRunner.mesh.transform.Find("head").GetComponent<MeshRenderer>().enabled = false;
     }
@@ -57,13 +55,12 @@ public class RaceController : MonoBehaviour
                 StartCoroutine(destroyMesh(runnerMesh));
                 killds++;
 
-                if (killds >= RUNNER_QUANTITY)
+                if (killds >= runnerQuantity)
                 {
                     killds = 0;
-                    text.text = (++generation).ToString();
+                    generationText.text = "Geração "+ (++generation).ToString();
                     recreateRunners();
                     trainsController.recreateTrains();
-                    firstPass = true;
                     break;
                 }
 
@@ -101,7 +98,6 @@ public class RaceController : MonoBehaviour
         NeuralNetwork brain = firstRunner.controller.brain;
         string json = JsonConvert.SerializeObject(brain);
         File.WriteAllText(@"D:\runners.json", json);
-        firstPass = false;
     }
 
     private void recreateRunners()
@@ -110,15 +106,10 @@ public class RaceController : MonoBehaviour
         NeuralNetwork victoryNetwork = victoryController.brain;
         runners = new List<Runner>();
 
-        for (int i = 0; i < RUNNER_QUANTITY; i++)
+        for (int i = 0; i < runnerQuantity; i++)
         {
-           // float mutationAmount = 0;
            float mutationAmount = 0.2f;
-            //if (i < RUNNER_QUANTITY - 1)
-            //{
-            //    mutationAmount = MathUtils.remap(i, 0, RUNNER_QUANTITY, 0, maxMutationFactor);
-            //}
-
+        
             GameObject newRunnerMesh = Instantiate(meshRunner, new Vector3(0, 0, 0), Quaternion.identity);
             newRunnerMesh.SetActive(true);
 
@@ -130,12 +121,6 @@ public class RaceController : MonoBehaviour
             runners.Add(newRunner);
         }
 
-        if (maxMutationFactor - 0.05f > minMaxMutationFactor)
-        {
-            maxMutationFactor -= 0.05f;
-        }
-
-
         firstRunner = runners[0];
         firstRunner.headRenderer.enabled = true;
     }
@@ -144,7 +129,7 @@ public class RaceController : MonoBehaviour
     {
         float maxValue = float.NegativeInfinity;
 
-        for (int i = 1; i < RUNNER_QUANTITY; i++)
+        for (int i = 1; i < runnerQuantity; i++)
         {
             Runner runner = runners[i];
             if (!runner.controller.itHits)
