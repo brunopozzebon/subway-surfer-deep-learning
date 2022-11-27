@@ -80,17 +80,22 @@ public class RunnerController : MonoBehaviour
         if (collision.collider.CompareTag("Train") && !itHits)
         {
             itHits = true;
-            Vector3 collisionVector = collision.contacts[0].point - transform.position;
 
-            if (approximately(collisionVector, rightCollision, 0.2f) ||
-                approximately(collisionVector, leftCollision, 0.2f))
+            if (animator != null)
             {
-                animator.SetBool("fallingFromWall", true);
+                Vector3 collisionVector = collision.contacts[0].point - transform.position;
+
+                if (approximately(collisionVector, rightCollision, 0.2f) ||
+                    approximately(collisionVector, leftCollision, 0.2f))
+                {
+                    animator.SetBool("fallingFromWall", true);
+                }
+                else
+                {
+                    animator.SetBool("wallCrash", true);
+                }
             }
-            else
-            {
-                animator.SetBool("wallCrash", true);
-            }
+            
         }
     }
 

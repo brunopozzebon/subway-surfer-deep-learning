@@ -30434,7 +30434,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
-  Mute: 1
+  Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -32317,7 +32317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rayObject: {fileID: 2076781306}
-  zVelocity: 0.15
+  zVelocity: 0.3
   sideVelocity: 0.2
 --- !u!4 &1822151677
 Transform:

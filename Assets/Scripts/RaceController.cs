@@ -10,6 +10,7 @@ public class RaceController : MonoBehaviour
 {
     public GameObject meshRunner;
     public TextMeshProUGUI text;
+    public TrainsController trainsController;
 
     private const int RUNNER_QUANTITY = 20;
 
@@ -61,6 +62,7 @@ public class RaceController : MonoBehaviour
                     killds = 0;
                     text.text = (++generation).ToString();
                     recreateRunners();
+                    trainsController.recreateTrains();
                     firstPass = true;
                     break;
                 }
@@ -110,12 +112,12 @@ public class RaceController : MonoBehaviour
 
         for (int i = 0; i < RUNNER_QUANTITY; i++)
         {
-            float mutationAmount = 0;
-
-            if (i < RUNNER_QUANTITY - 1)
-            {
-                mutationAmount = MathUtils.remap(i, 0, RUNNER_QUANTITY, 0, maxMutationFactor);
-            }
+           // float mutationAmount = 0;
+           float mutationAmount = 0.2f;
+            //if (i < RUNNER_QUANTITY - 1)
+            //{
+            //    mutationAmount = MathUtils.remap(i, 0, RUNNER_QUANTITY, 0, maxMutationFactor);
+            //}
 
             GameObject newRunnerMesh = Instantiate(meshRunner, new Vector3(0, 0, 0), Quaternion.identity);
             newRunnerMesh.SetActive(true);
