@@ -75,9 +75,7 @@ namespace DefaultNamespace
         
         public NeuralNetwork DeepCopy()
         {
-            //return (NeuralNetwork)MemberwiseClone();
-
-            NeuralNetwork newNeuralNetwork = new NeuralNetwork(this.neuronCounts);
+            NeuralNetwork newNeuralNetwork = new NeuralNetwork(neuronCounts);
 
             for (int m = 0; m < layers.Count; m++)
             {

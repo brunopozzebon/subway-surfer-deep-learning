@@ -4,13 +4,13 @@ namespace DefaultNamespace
 {
     public class VisionRay
     {
-        public GameObject mesh;
         public RayController controller;
-
+        public MeshRenderer renderer;
+        
         public VisionRay(GameObject mesh)
         {
-            this.mesh = mesh;
             this.controller = mesh.GetComponent<RayController>();
+            renderer = mesh.GetComponent<MeshRenderer>();
         }
     }
 }

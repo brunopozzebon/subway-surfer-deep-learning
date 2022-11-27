@@ -9,14 +9,9 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         Vector3 firstPositionRunner =  raceController.getFirstPositionRunner();
-
-        if (firstPositionRunner != default(Vector3))
-        {
-            transform.position = firstPositionRunner + cameraPositionOffset;
-       
-            transform.LookAt(firstPositionRunner);
-            transform.rotation = Quaternion.Euler(cameraRotationOffset + transform.rotation.eulerAngles);
-        }
-      
+        
+        transform.position = firstPositionRunner + cameraPositionOffset;
+        transform.LookAt(firstPositionRunner);
+        transform.rotation = Quaternion.Euler(cameraRotationOffset + transform.rotation.eulerAngles);
     }
 }

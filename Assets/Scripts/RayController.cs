@@ -9,35 +9,44 @@ public class RayController : MonoBehaviour
     public float hitDistance;
     private Vector3 rayDirection;
 
+    private float raySize;
+
     private void Start()
     {
         normalRay = Resources.Load("normalRay", typeof(Material)) as Material;
         collidingRay = Resources.Load("collidingRay", typeof(Material)) as Material;
         GetComponent<MeshRenderer>().material = normalRay;
-        rayDirection = transform.Find("end").transform.position - transform.Find("start").transform.position;
+        rayDirection = (transform.Find("end").transform.position - transform.Find("start").transform.position).normalized;
+        raySize = (transform.Find("end").transform.position - transform.Find("start").transform.position).magnitude;
+        hitDistance = raySize;
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Train")
+        if (other.CompareTag("Train"))
         {
             GetComponent<MeshRenderer>().material = collidingRay;
 
             Ray ray = new Ray(transform.Find("start").transform.position, rayDirection);
             float distance;
+           
             if(other.bounds.IntersectRay(ray, out distance))
             {
-                //Vector3 point = ray.origin + ray.direction * distance;
+               // Vector3 point = ray.origin + ray.direction * distance;
                 hitDistance = distance;
+            }
+            else
+            {
+                hitDistance = raySize;
             }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Train")
+        if (other.CompareTag("Train"))
         {
-            hitDistance = float.MaxValue;
+            hitDistance = raySize;
             GetComponent<MeshRenderer>().material = normalRay;
         }
       
