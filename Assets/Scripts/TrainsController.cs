@@ -35,9 +35,16 @@ public class TrainsController : MonoBehaviour
     {
         trains = new List<GameObject>();
 
+        int lastXIndex = getXTrainIndex(true, -1);
         for (int i = 0; i < trainsQuantity; i++)
         {
-            float x = getXTrainPosition(i==0);
+            if (i!=0)
+            {
+                lastXIndex = getXTrainIndex(false, lastXIndex);
+            }
+        
+            float x = getXTrainPosition(lastXIndex);
+            
             float z = (trainStep * i) + initialTrainOffset;
             
             GameObject newTrain = Instantiate(train, new Vector3(x, 0, z), Quaternion.identity);
@@ -50,25 +57,46 @@ public class TrainsController : MonoBehaviour
     
     public void recreateTrains()
     {
+        int lastXIndex = getXTrainIndex(true, -1);
         for (int i = 0; i < trainsQuantity; i++)
         {
-            float x = getXTrainPosition(i==0);
+            if (i!=0)
+            {
+                lastXIndex = getXTrainIndex(false, lastXIndex);
+            }
+            float x = getXTrainPosition(lastXIndex);
             float z = (trainStep * i) + initialTrainOffset;
             trains[i].transform.position = new Vector3(x, 0, z);
         }
     }
     
-    private float getXTrainPosition(bool isFirstTrain)
+    private int getXTrainIndex(bool isFirstTrain, int lastIndex)
     
     {
-
         if (isFirstTrain)
         {
-            return secondTrainPosition.position.x;
+            return 1;
         }
-        int randomNumber = Random.Range(0,3);
 
-        switch (randomNumber)
+        int randomIndex = Random.Range(0,3);
+        
+        while (true)
+        {
+            if (randomIndex!=lastIndex)
+            {
+                break;
+            }
+            randomIndex = Random.Range(0,3);
+        }
+
+        return randomIndex;
+
+    }
+    
+    private float getXTrainPosition(int index)
+    
+    {
+        switch (index)
         {
             case 0:
                 return firstTrainPosition.position.x;
