@@ -77,7 +77,7 @@ public class RunnerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Train") && !itHits)
+        /*if (collision.collider.CompareTag("Train") && !itHits)
         {
             itHits = true;
 
@@ -96,7 +96,7 @@ public class RunnerController : MonoBehaviour
                 }
             }
             
-        }
+        }*/
     }
 
     public void onGoRight(bool isGoingToRight)

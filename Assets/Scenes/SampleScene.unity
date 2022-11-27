@@ -4604,7 +4604,7 @@ MonoBehaviour:
   meshRunner: {fileID: 1822151675}
   generationText: {fileID: 1479239513}
   trainsController: {fileID: 1563108532}
-  runnerQuantity: 20
+  runnerQuantity: 1
 --- !u!4 &310940889
 Transform:
   m_ObjectHideFlags: 0
@@ -19845,8 +19845,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 24.6, y: 27.9, z: 69.98}
-  m_Center: {x: 0, y: 14.05, z: 0}
+  m_Size: {x: 24.6, y: 27.9, z: 63.99}
+  m_Center: {x: 0, y: 14.05, z: -1.7}
 --- !u!4 &1212404555 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6f6b46e826d26d246953e52ecf96b46f, type: 3}
@@ -26409,6 +26409,7 @@ MonoBehaviour:
   firstTrainPosition: {fileID: 39322713}
   secondTrainPosition: {fileID: 1038306481}
   thirdTrainPosition: {fileID: 1926428263}
+  raceController: {fileID: 310940888}
   train: {fileID: 1212404553}
   cameraPosition: {fileID: 963194228}
 --- !u!1 &1563685727
