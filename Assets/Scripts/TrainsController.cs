@@ -38,30 +38,28 @@ public class TrainsController : MonoBehaviour
 
     private void createTrains()
     {
+        
         int lastXIndex = getXTrainIndex(true, -1);
+        float z = 0;
         for (int i = 0; i < trainsQuantity; i++)
         {
             if (i != 0)
                 lastXIndex = getXTrainIndex(false, lastXIndex);
 
             float x = getXTrainPosition(lastXIndex);
-            float z = (trainStep * i) + initialTrainOffset;
+            z = (trainStep * i) + initialTrainOffset;
 
             GameObject newTrain = Instantiate(train, new Vector3(x, 0, z), Quaternion.identity);
             newTrain.SetActive(true);
             newTrain.transform.parent = transform;
-
-            if (i + 1 == trainsQuantity)
-            {
-                totalLineSize = z + trainStep - initialTrainOffset;
-            }
-
             trains.Add(newTrain);
         }
+        totalLineSize = z + trainStep - initialTrainOffset;
     }
 
     public void recreateTrains()
     {
+        trainOffsetIndex = 0;
         int lastXIndex = getXTrainIndex(true, -1);
         for (int i = 0; i < trainsQuantity; i++)
         {
@@ -74,6 +72,30 @@ public class TrainsController : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        int increment = (int)cameraPosition.position.z / boardsStep;
+
+        firstBoardsChunk.transform.position = new Vector3(0, 0, increment * boardsStep);
+        secondBoardsChunk.transform.position = new Vector3(0, 0, increment * boardsStep + boardsStep);
+        thirdBoardsChunk.transform.position =new Vector3(0, 0, increment * boardsStep + boardsStep + boardsStep);
+
+        Vector3 firstPlacePosition = raceController.getFirstPositionRunner();
+
+        if (firstPlacePosition != null &&
+            firstPlacePosition.z > trainOffsetMargin + trains[trainOffsetIndex].transform.position.z)
+        {
+            int index = getXTrainIndex(false, trainOffsetIndex > 0 ? trainOffsetIndex -1 :
+                trains.Count -1);
+            float newIndex = getXTrainPosition(index);
+            
+            trains[trainOffsetIndex].transform.position = new Vector3(newIndex, 0, 
+                
+                trains[trainOffsetIndex].transform.position.z + totalLineSize);
+            trainOffsetIndex = (trainOffsetIndex + 1) % trains.Count;
+        }
+    }
+    
     private int getXTrainIndex(bool isFirstTrain, int lastIndex)
 
     {
@@ -102,23 +124,6 @@ public class TrainsController : MonoBehaviour
                 return secondTrainPosition.position.x;
             default:
                 return thirdTrainPosition.position.x;
-        }
-    }
-
-    void Update()
-    {
-        int increment = (int)cameraPosition.position.z / boardsStep;
-        firstBoardsChunk.transform.position = new Vector3(0, 0, increment * boardsStep);
-        secondBoardsChunk.transform.position = new Vector3(0, 0, increment * boardsStep + boardsStep);
-        thirdBoardsChunk.transform.position = new Vector3(0, 0, increment * boardsStep + boardsStep + boardsStep);
-
-        Vector3 firstPlacePosition = raceController.getFirstPositionRunner();
-
-        if (firstPlacePosition != null &&
-            firstPlacePosition.z > trainOffsetMargin + trains[trainOffsetIndex].transform.position.z)
-        {
-            trains[trainOffsetIndex].transform.position += new Vector3(0, 0, totalLineSize);
-            trainOffsetIndex = (trainOffsetIndex + 1) % trains.Count;
         }
     }
 }
